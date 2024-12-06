@@ -1,11 +1,32 @@
 "use client";
 
-import Atoms from "../components/check-atoms/Atoms";
+import { Button } from "appscrip-designkit";
+import Link from "next/link";
 
 export default function Home() {
+  const pages = [
+    {
+      name: "Atoms",
+      path: "/atoms",
+    },
+    {
+      name: "Molecules",
+      path: "/molecules",
+    },
+    {
+      name: "Components",
+      path: "/components",
+    },
+  ];
   return (
-    <div className="flex flex-col gap-4 p-4 md:p-8 lg:p-16">
-      <Atoms />
+    <div className="w-full flex items-center justify-center mt-20">
+      <ul className="flex flex-col gap-4">
+        {pages?.map((page) => (
+          <Button variant="outline" key={page.name}>
+            <Link href={page.path}>{page.name}</Link>
+          </Button>
+        ))}
+      </ul>
     </div>
   );
 }
